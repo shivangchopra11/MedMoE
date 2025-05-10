@@ -1,0 +1,41 @@
+# @package _global_
+
+# to execute this experiment run:
+# python train.py experiment=example
+
+defaults:
+  - /data: unimed
+  - /model: med-moe_pretraining
+  - /callbacks: default
+  - /trainer: default
+  - _self_
+  
+# all parameters below will be merged with parameters from default configurations set above
+# this allows you to overwrite only specified parameters
+
+tags: ["unimed", "pretraining"]
+
+seed: 12345
+
+trainer:
+  min_epochs: 1
+  max_epochs: 10
+  gradient_clip_val: 0.25
+  accumulate_grad_batches: 1 # try larger numbers and see 
+  accelerator: gpu 
+  
+model:
+  optimizer:
+    lr: 0.00005
+
+# ckpt_path: "/nethome/schopra47/nvme/bio/VLM/logs/train/runs/2025-04-04_12-18-40/checkpoints/epoch_001.ckpt"
+
+data:
+  batch_size: 256
+
+logger:
+  wandb:
+    tags: ["unimed", "pretraining", "hierarchicalLocalContrastiveLoss"]
+    group: "pretraining_unimed"
+#   aim:
+#     experiment: "mnist" 

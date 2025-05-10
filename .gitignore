@@ -1,0 +1,13 @@
+__pycache__/
+datasets/
+*.DS_Store
+.project-root
+pretrained/
+logs/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+*.pywz
+*.pyzw

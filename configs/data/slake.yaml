@@ -1,0 +1,18 @@
+_target_: src.data.slake_datamodule.SLAKEDataModule
+data_dir: ${paths.data_dir}/slake
+batch_size: 64 # Needs to be divisible by the number of devices (e.g., if in a distributed setup)
+num_workers: 8
+pin_memory: False
+label_type: abnormal # need to match the object key in batch 
+content_type: Abnormality
+modality: null 
+img_id_limit: -1 # used to limit the number of samples to include 
+language: en # en, zh
+transformations:
+  norm: 'slake'
+  imsize: 256
+  random_crop: false
+  #  crop_size: 224
+  random_horizontal_flip: false 
+  random_affine: false 
+  color_jitter: false 

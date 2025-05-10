@@ -1,0 +1,13 @@
+_target_: src.data.pmcoa_datamodule.PMCOADataModule
+data_dir: ${paths.data_dir}
+batch_size: 256 # Needs to be divisible by the number of devices (e.g., if in a distributed setup)
+num_workers: 5
+pin_memory: False
+# transformations:
+#   norm: 'pmcoa'
+#   imsize: 256
+#   random_crop: false
+#   crop_size: 224
+#   random_horizontal_flip: false 
+#   random_affine: false 
+#   color_jitter: false 

@@ -1,0 +1,28 @@
+# @package hydra.launcher
+submitit_folder: ${hydra.sweep.dir}/submitit/%j
+timeout_min: 1440 # 24 hours, set to more if required
+cpus_per_task: 4
+gpus_per_node: "a40:8" # Leave null
+# If using ddp, this needs to be greater than or equal to the number of GPUs in each node
+tasks_per_node: 8
+mem_gb: 45
+nodes: 1
+name: medmoe
+_target_: hydra_plugins.hydra_submitit_launcher.submitit_launcher.SlurmLauncher
+partition: kira-lab
+qos: long
+comment: null
+constraint: null # Leave null
+exclude: null # Leave null
+gres: null # The number of GPUs you require
+cpus_per_gpu: null # Leave null
+gpus_per_task: null # Leave null
+mem_per_gpu: null # Leave null
+mem_per_cpu: null # Leave null
+account: null
+max_num_timeout: 0
+# Only include this if you want to requeue your jobs
+additional_parameters: { signal: SIGUSR1@90, requeue: true }
+# Idk what this does
+array_parallelism: 10
+# Put whatever commands you want to run before the job here

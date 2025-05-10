@@ -1,0 +1,47 @@
+_target_: src.models.med_flava_module.MedFLAVAPreTrainingLightningModule
+
+optimizer:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: 0.00005
+  weight_decay: 1e-6
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  _partial_: true
+  mode: min
+  factor: 0.1
+  patience: 10
+
+model:
+  _target_: src.models.components.med_moe.MedMoE
+  vision:
+    checkpoint_path: "pretrained/MedCLIP/pytorch_model.bin"
+    model_name: 'swin'
+    freeze_cnn: false
+    pretrained: true # pretrained models from the torch package
+    embed_dim: 768
+    projection: false
+    projection_dim: 384
+    use_moe: true
+    lora: false
+    lora_r: 8
+    lora_alpha: 16
+    lora_dropout: 0.1
+  text:
+    checkpoint_path: "pretrained/MedCLIP/pytorch_model.bin"
+    tokenizer: 'emilyalsentzer/Bio_ClinicalBERT'
+    bert_type: 'emilyalsentzer/Bio_ClinicalBERT'
+    freeze_bert: true
+    last_n_layers: 4
+    aggregate_method: 'sum'
+    norm: false
+    agg_tokens: true
+    max_length: 25
+    context_length: 256
+    embed_dim: 768
+    projection: false
+    projection_dim: 384
+
+# compile model for faster training with pytorch 2.0
+compile: false

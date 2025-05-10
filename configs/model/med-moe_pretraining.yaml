@@ -1,0 +1,41 @@
+defaults:
+  - med-moe.yaml
+  - _self_
+  
+_target_: src.models.medmoe_module.MedMoEPretrainingLightningModule
+
+optimizer:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: 0.00005
+  weight_decay: 0.0
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  _partial_: true
+  mode: min
+  factor: 0.1
+  patience: 10
+
+loss:
+  global_loss_weight: 0.5
+  local_loss_weight: 0.5
+  classifier_loss_weight: 2.0
+
+  soft_label: false 
+  topk: 5
+  threshold0: 0.98
+  threshold1: 0.97
+  global_loss:
+    # _target_: src.losses.ZEROGlobalContrastiveLoss # this sets global loss to 0
+    _target_: src.losses.GLORIAGlobalContrastiveLoss
+    # _target_: src.losses.SoftGLORIAGlobalContrastiveLoss
+    # _target_: src.losses.HardNegativeContrastiveLoss
+  local_loss:
+    #_target_: src.losses.ZEROLocalContrastiveLoss # this sets local loss to 0 
+    _target_: src.losses.GLORIALocalContrastiveLoss 
+    # _target_: src.losses.SoftGLORIALocalContrastiveLoss 
+  temp1: 4.0
+  temp2: 5.0
+  temp3: 10.0
+  agg: "sum"

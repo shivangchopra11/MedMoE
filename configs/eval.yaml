@@ -1,0 +1,25 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - data: chexpert # choose datamodule with `test_dataloader()` for evaluation
+  - model: med-flava_classification
+  - logger: null
+  - trainer: default
+  - paths: default
+  - extras: default
+  - hydra: default
+
+task_name: "eval"
+
+model:
+  loss:
+    _target_: torch.nn.BCEWithLogitsLoss
+    # pos_weight: null
+    reduction: 'mean'
+  num_classes: 5
+
+tags: ["chexpert", "classification", "eval"]
+
+# passing checkpoint path is necessary for evaluation
+ckpt_path: /nethome/schopra47/nvme/bio/VLM/logs/train/runs/2025-04-24_09-02-25/checkpoints/last.ckpt

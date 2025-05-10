@@ -1,0 +1,16 @@
+_target_: src.data.unimed_datamodule.UnimedDataModule
+data_dir: ${paths.data_dir}/
+# train_data_paths: "/nethome/schopra47/nvme/bio/MedMoE/datasets/unimed/radimagenet_webdataset/dataset-{000001..000104}.tar::/nethome/schopra47/nvme/bio/MedMoE/datasets/unimed/roco_webdataset/dataset-{000001..000006}.tar::/nethome/schopra47/nvme/bio/MedMoE/datasets/unimed/chexpert_webdataset/dataset-{000001..000211}.tar"
+train_data_paths: "/nethome/schopra47/nvme/bio/MedMoE/datasets/unimed/radimagenet_webdataset/dataset-{000001..001047}.tar::/nethome/schopra47/nvme/bio/MedMoE/datasets/unimed/chexpert_webdataset/dataset-{000001..000210}.tar::/nethome/schopra47/nvme/bio/MedMoE/datasets/unimed/chest_xray8_webdataset/dataset-{000001..000111}.tar::/nethome/schopra47/nvme/bio/MedMoE/datasets/unimed/roco_webdataset/dataset-{000001..000005}.tar::/nethome/schopra47/nvme/bio/MedMoE/datasets/unimed/pmcoa_webdataset/dataset-{000001..000147}.tar::/nethome/schopra47/nvme/bio/MedMoE/datasets/unimed/quilt_webdataset/dataset-{000001..000100}.tar"
+val_data_paths: "/nethome/schopra47/nvme/bio/MedMoE/datasets/unimed/radimagenet_webdataset/dataset-001048.tar::/nethome/schopra47/nvme/bio/MedMoE/datasets/unimed/chexpert_webdataset/dataset-000211.tar::/nethome/schopra47/nvme/bio/MedMoE/datasets/unimed/chest_xray8_webdataset/dataset-000112.tar::/nethome/schopra47/nvme/bio/MedMoE/datasets/unimed/roco_webdataset/dataset-000006.tar::/nethome/schopra47/nvme/bio/MedMoE/datasets/unimed/pmcoa_webdataset/dataset-000148.tar::/nethome/schopra47/nvme/bio/MedMoE/datasets/unimed/quilt_webdataset/dataset-000101.tar"
+batch_size: 256 # Needs to be divisible by the number of devices (e.g., if in a distributed setup)
+num_workers: 5
+pin_memory: False
+# transformations:
+#   norm: 'pmcoa'
+#   imsize: 256
+#   random_crop: false
+#   crop_size: 224
+#   random_horizontal_flip: false 
+#   random_affine: false 
+#   color_jitter: false 

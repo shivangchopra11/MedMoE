@@ -1,0 +1,24 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - data: chexpert # choose datamodule with `test_dataloader()` for evaluation
+  - model: med-flava_pretraining
+  - logger: null
+  - trainer: default
+  - paths: default
+  - extras: default
+  - hydra: default
+
+task_name: "eval"
+
+model:
+  num_classes: 5
+
+
+tags: ["chexpert", "classification", "eval_zs"]
+
+# passing checkpoint path is necessary for evaluation
+# ckpt_path: /nethome/schopra47/nvme/bio/VLM/logs/train/runs/2025-04-24_09-02-25/checkpoints/last.ckpt # 4.95, 50.8
+ckpt_path: /nethome/schopra47/nvme/bio/VLM/logs/train/runs/2025-04-23_20-04-43/checkpoints/last.ckpt # 30.19, 55.59
+# ckpt_path: /nethome/schopra47/nvme/bio/VLM/logs/train/runs/2025-04-23_14-59-58/checkpoints/last.ckpt # 4.45, 48.75
