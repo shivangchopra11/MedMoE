@@ -97,6 +97,7 @@ class MoE(nn.Module):
         """
         router_logits = self.router(global_feat)  # [B, K]
         router_logits = torch.softmax(router_logits, dim=-1)    # [B, K]
+        top_expert = torch.argmax(router_logits, dim=-1)  # [B]
 
         # print(router_logits.shape)
 
@@ -104,11 +105,8 @@ class MoE(nn.Module):
         expert_outputs = [expert(multi_scale_feats) for expert in self.experts]
         expert_outputs = torch.stack(expert_outputs, dim=1)  # [B, K, P, D]
 
-        gates = router_logits.unsqueeze(-1).unsqueeze(-1)  # [B, K, 1, 1]
-        fused_output = (gates * expert_outputs).sum(dim=1)  # [B, P, D]
-        fused_output = fused_output.transpose(1, 2)  # [B, 256, D]
-        fused_output = F.adaptive_avg_pool1d(fused_output, output_size=256)  # [B, D, 256]
-        fused_output = fused_output.transpose(1, 2)  # [B, 256, D]
+        fused_output = expert_outputs[torch.arange(expert_outputs.size(0)), top_expert, :, :]  # [B, P, D]
+
         B, P, D = fused_output.shape
         H = W = int(P ** 0.5)
         fused_output = fused_output.transpose(1, 2).reshape(B, D, H, W)  # [B, D, 56, 56]
