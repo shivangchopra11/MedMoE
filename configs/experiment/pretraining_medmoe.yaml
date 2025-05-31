@@ -21,7 +21,7 @@ trainer:
   min_epochs: 1
   max_epochs: 10
   gradient_clip_val: 0.25
-  accumulate_grad_batches: 1 # try larger numbers and see 
+  accumulate_grad_batches: 10 # try larger numbers and see 
   accelerator: gpu 
   
 model:
