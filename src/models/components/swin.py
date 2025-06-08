@@ -91,11 +91,11 @@ class MoE(nn.Module):
             nn.Linear(128, num_experts)
         )
     
-    def forward(self, multi_scale_feats, global_feat):
+    def forward(self, multi_scale_feats, swin_feat):
         """
         multi_scale_feats: list of scale features from Swin
         """
-        router_logits = self.router(global_feat)  # [B, K]
+        router_logits = self.router(swin_feat)  # [B, K]
         router_logits = torch.softmax(router_logits, dim=-1)    # [B, K]
         top_expert = torch.argmax(router_logits, dim=-1)  # [B]
 
@@ -109,9 +109,12 @@ class MoE(nn.Module):
 
         B, P, D = fused_output.shape
         H = W = int(P ** 0.5)
-        fused_output = fused_output.transpose(1, 2).reshape(B, D, H, W)  # [B, D, 56, 56]
+        global_feat = fused_output.mean(dim=1)
+        local_feat = fused_output.transpose(1, 2).reshape(B, D, H, W)  # [B, D, 56, 56]
 
-        return fused_output, router_logits
+
+
+        return global_feat, local_feat, router_logits
 
 class SWIN(nn.Module):
     def __init__(self, pretrained=True, lora=False, lora_r=8, lora_alpha=16, lora_dropout=0.1, use_moe=True):
@@ -126,18 +129,20 @@ class SWIN(nn.Module):
 
     def forward(self, x):
         inputs = self.preprocessor(x, return_tensors="pt").to(self.device)
+        
         # x = torch.stack([self.preprocessor(img) for img in x]).to(self.device)
         out = self.model(**inputs, output_hidden_states=True) 
 
         final_hidden = out.last_hidden_state
-        global_feat = final_hidden.mean(dim=1) 
+        swin_feat = final_hidden.mean(dim=1)
 
         stage_feats = [out.hidden_states[i] for i in range(4)]
 
         if self.moe:
-            local_feat, router_logits = self.moe(stage_feats, global_feat)
+            global_feat, local_feat, router_logits = self.moe(stage_feats, swin_feat)
         else:
-            local_feat = out.last_hidden_state
+            local_feat = final_hidden
+            global_feat = final_hidden.mean(dim=1) 
             router_logits = None
 
 
