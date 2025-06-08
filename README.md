@@ -4,8 +4,8 @@
     <img src="https://i.imgur.com/waxVImv.png" alt="Image">
 </p>
 
-> [Shivang Chopra*](https://shivangchopra11.github.io/), [Lingchao Mao*](https://lingchm.github.io/), [Gabriela Sanchez-Rodriguez*](https://feola.bme.gatech.edu/people-2/gabriela-sanchez-rodriguez-2/), [Andrew J. Feola](https://bme.gatech.edu/bme/faculty/Andrew-J.-Feola), [Jing Li](https://www.isye.gatech.edu/users/jing-li), [Zsolt Kira](https://faculty.cc.gatech.edu/~zk15/) <br>
-**Georgia Institute of Technology**
+> [Shivang Chopra*](https://shivangchopra11.github.io/)<sup>1</sup>, [Lingchao Mao*](https://lingchm.github.io/)<sup>1</sup>, [Gabriela Sanchez-Rodriguez*](https://feola.bme.gatech.edu/people-2/gabriela-sanchez-rodriguez-2/)<sup>1</sup>, [Andrew J. Feola](https://bme.gatech.edu/bme/faculty/Andrew-J.-Feola)<sup>1,2,3</sup>, [Jing Li](https://www.isye.gatech.edu/users/jing-li)<sup>1</sup>, [Zsolt Kira](https://faculty.cc.gatech.edu/~zk15/)<sup>1</sup> <br>
+**<sup>1</sup>Georgia Institute of Technology, <sup>2</sup>Emory University, <sup>3</sup>Joseph M Cleland Atlanta VAMC**
 
 *Equally contributing first authors
 
@@ -29,3 +29,6 @@
   year={2025}
 }
 ```
+
+## Acknowledgement
+Our code repository is mainly built on [UniMed-CLIP](https://github.com/mbzuai-oryx/UniMed-CLIP) and [lightning-hydra-template](https://github.com/ashleve/lightning-hydra-template). We thank the authors for releasing their code.
