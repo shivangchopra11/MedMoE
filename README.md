@@ -22,7 +22,7 @@
 ```bibtex
 @article{medmoe,
   title={MedMoE: Modality-Specialized Mixture of Experts for Medical Vision-Language Understanding},
-  author={Shivang Chopra and Lingchao Mao and Gabriela Sanchez-Rodriguez and Andrew J. Feola and Jing Li and Zsolt Kira},
+  author={Shivang Chopra and Gabriela Sanchez-Rodriguez and Lingchao Mao and Andrew J. Feola and Jing Li and Zsolt Kira},
   booktitle={Workshop on Multimodal Foundation Models for Biomedicine in CVPR},
   year={2025}
 }
