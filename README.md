@@ -12,10 +12,10 @@
 
 ## Pretraining
 
-### Single Node
+### Single GPU
 `python src/train.py experiment=pretraining_medmoe logger=wandb`
 
-### Multi-Node
+### Multi GPU
 `python src/train.py --multirun experiment=pretraining_medmoe trainer=ddp trainer.devices=8 logger=wandb`
 
 ## Reference
