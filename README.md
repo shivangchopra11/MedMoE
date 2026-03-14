@@ -1,11 +1,23 @@
-# MedMoE: Modality-Specialized Mixture of Experts for Medical Vision-Language Understanding
+
+<h1 align="center">MedMoE: Modality-Specialized Mixture of Experts for Medical Vision-Language Understanding</h1>
+<h3 align="center">(MMFM-BIOMED Workshop @ CVPR 2025)</h3>
+
+
+<div style="font-family: charter;" align="center">
+    <a href="https://shivangchopra11.github.io/" target="_blank">Shivang Chopra<sup>1</sup></a>,
+    <a href="https://feola.bme.gatech.edu/people-2/gabriela-sanchez-rodriguez-2/" target="_blank">Gabriela Sanchez-Rodriguez<sup>1,2</sup></a>,
+    <a href="https://lingchm.github.io/" target="_blank">Lingchao Mao<sup>1</sup></a>,
+    <br>
+    <a href="https://med.emory.edu/directory/profile/?u=AFEOLA2" target="_blank">Andrew J. Feola<sup>1,2,3</sup></a>,
+    <a href="https://www.isye.gatech.edu/users/jing-li" target="_blank">Jing Li<sup>1</sup></a>,
+    <a href="https://faculty.cc.gatech.edu/~zk15/" target="_blank">Zsolt Kira<sup>1</sup></a>,
+    <br>
+    <b><sup>1</sup>Georgia Institute of Technology, <sup>2</sup>Emory University, <sup>3</sup>Joseph M Cleland Atlanta VAMC</b>
+</div>
 
 <p align="center">
-    <img src="https://i.imgur.com/waxVImv.png" alt="Image">
+    <img src="MedMoe_Arch.jpg" alt="MedMoE" width="800" height="auto">
 </p>
-
-> [Shivang Chopra](https://shivangchopra11.github.io/)<sup>1</sup>, [Gabriela Sanchez-Rodriguez](https://feola.bme.gatech.edu/people-2/gabriela-sanchez-rodriguez-2/)<sup>1,2</sup>, [Lingchao Mao](https://lingchm.github.io/)<sup>1</sup>, [Andrew J. Feola](https://bme.gatech.edu/bme/faculty/Andrew-J.-Feola)<sup>1,2,3</sup>, [Jing Li](https://www.isye.gatech.edu/users/jing-li)<sup>1</sup>, [Zsolt Kira](https://faculty.cc.gatech.edu/~zk15/)<sup>1</sup> <br>
-**<sup>1</sup>Georgia Institute of Technology, <sup>2</sup>Emory University, <sup>3</sup>Joseph M Cleland Atlanta VAMC**
 
 ## Environment Setup
 `conda env create --file=environment.yaml`
