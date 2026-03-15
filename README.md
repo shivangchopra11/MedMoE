@@ -13,7 +13,11 @@
     <a href="https://faculty.cc.gatech.edu/~zk15/" target="_blank">Zsolt Kira<sup>1</sup></a>,
     <br>
     <b><sup>1</sup>Georgia Institute of Technology, <sup>2</sup>Emory University, <sup>3</sup>Joseph M Cleland Atlanta VAMC</b>
+    <br>
+    <a href="https://arxiv.org/pdf/2506.08356"><img src='https://img.shields.io/badge/MedMoE-arXiv-red' alt='Paper PDF'></a>
 </div>
+
+
 
 <p align="center">
     <img src="MedMoe_Arch.jpg" alt="MedMoE" width="800" height="auto">
